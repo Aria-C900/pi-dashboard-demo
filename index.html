@@ -1,30 +1,49 @@
 <html>
    <head>
-    <title>
-     Home Page
-    </title>
+      <title>Home Page</title>
+      <style>
+         body {
+            background-color: green;
+         }
+         .container {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center; /* This centers the text inside the container */
+            color: white; /* Makes the text easier to see (White txt on Green) */
+         }
+      </style>
    </head>
+   
+   <div class="container">
+      <h2>Dashboard</h2>
+      <p>Welcome to your dashboard!</p>
+   </div>
+</body>
+</html>
 
-   <body style="background-color:green;">
-    <div style="width:100%;">
+     <div> <!-- OUTER DIV (parent) -->
+      <style>
+         .center-iframe {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+      </style>
 
-     <div>
-      <center>
+      <div class="center-iframe"> <!-- CHILD div from ^^^ outer div -->
          <iframe src="https://free.timeanddate.com/clock/i88isw22/n805/fn15/fs26/th2" frameborder="0" width="153" height="32"></iframe>
-      </center/>
      </div>
 
-     <div>
-      <center>
-       <a href="../pages/main.html">
-         Page 2
-       </a>
-      </center>
+     <div class="page-link-wrapper">
+       <a href="../pages/main.html">Page 2</a>
      </div>
-     
-     <div style="right:10px; bottom:10px; position:fixed;">
-      <iframe src="https://calendar.google.com/calendar/embed?src=g8vt626q1bkv2qi3dqguitbefc%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0; width:800; height:450" frameborder="0" scrolling="no"></iframe>
-    </div>
+
+
+     <iframe
+        class="calendar-iframe"
+        src="https://calendar.google.com/calendar/embed?src=g8vt626q1bkv2qi3dqguitbefc%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0; width:800; height:450" frameborder="0" scrolling="no"></iframe>
+        
+     <!-- <div style="right:10px; bottom:10px; position:fixed;"> -->
 
   </body>
 </html>
