@@ -32,20 +32,36 @@ def run_cracker():
     print("⚙️ Attempting to crack it with a common wordlist...")
     loading_animation("Cracking", 5)
 
-    subprocess.run(["john", PASSFILE, f"--wordlist={WORDLIST}"], stdout=subprocess.DEVNULL)
 
-    output = subprocess.check_output(["john", "--show", PASSFILE]).decode()
+############ added
+# CRACK (options first, then file; add format for $6$ hashes)
+subprocess.run(
+    ["john", "--format=sha512crypt", f"--wordlist={WORDLIST}", TEMPFILE],
+    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+)
 
-    print("\n📊 Result:")
-    if "student:" in output:
-        cracked_pw = output.strip().split(":")[1]
-        print(f"✅ Cracked! Password was: {cracked_pw}")
-    else:
-        print("❌ Too strong! This password wasn’t in the list.")
+# SHOW (read result for just the temp file)
+output = subprocess.check_output(["john", "--show", TEMPFILE]).decode()
 
-    os.remove(PASSFILE)
-    print("\n🔁 Press Enter to try another password or Ctrl+C to exit.")
-    input()
+print("\n📊 Result:")
 
+# typo fixes: startswith (not startswidth); safer parsing
+line = next((ln for ln in output.splitlines() if ln.startswith("student:")), None)
+if line:
+    cracked_pw = line.split(":", 1)[1]
+    print(f"✅ Cracked! Password was: {cracked_pw}")
+else:
+    print("❌ Too strong! This password wasn’t in the list.")
+
+# clean only the temp file; keep your PASSFILE history
+try:
+    os.remove(TEMPFILE)
+except FileNotFoundError:
+    pass
+
+input("\n Press Enter to try another password.")
+
+
+### end of new
 while True:
     run_cracker()
