@@ -32,8 +32,6 @@ def run_cracker():
     print("⚙️ Attempting to crack it with a common wordlist...")
     loading_animation("Cracking", 5)
 
-
-############ added
 # CRACK (options first, then file; add format for $6$ hashes)
 subprocess.run(
     ["john", "--format=sha512crypt", f"--wordlist={WORDLIST}", TEMPFILE],
@@ -59,7 +57,7 @@ try:
 except FileNotFoundError:
     pass
 
-input("\n Press Enter to try another password.")
+input("\n🔁 Press Enter to try another password.")
 
 
 ### end of new
