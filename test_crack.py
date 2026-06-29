@@ -19,8 +19,8 @@ def loading_animation(text="Cracking", duration=3):
     print("\n")
 
 def run_cracker():
-    print("🔐 Welcome to the Password Cracker Demo!")
-    print("⚠️  For education only. Please don't use real passwords.")
+    print("Welcome to the Password Cracker Demo!")
+    print("For education only. Please don't use real passwords.")
     password = getpass.getpass("Enter a test password: ")
 
     print("\n📡 Hashing your password...")
@@ -44,15 +44,15 @@ subprocess.run(
 # SHOW (read result for just the temp file)
 output = subprocess.check_output(["john", "--show", TEMPFILE]).decode()
 
-print("\n📊 Result:")
+print("\n Result:")
 
 # typo fixes: startswith (not startswidth); safer parsing
 line = next((ln for ln in output.splitlines() if ln.startswith("student:")), None)
 if line:
     cracked_pw = line.split(":", 1)[1]
-    print(f"✅ Cracked! Password was: {cracked_pw}")
+    print(f"Cracked! Password was: {cracked_pw}")
 else:
-    print("❌ Too strong! This password wasn’t in the list.")
+    print("Too strong! This password wasn’t in the list.")
 
 # clean only the temp file; keep your PASSFILE history
 try:
@@ -60,7 +60,7 @@ try:
 except FileNotFoundError:
     pass
 
-input("\n🔁 Press Enter to try another password.")
+input("\n Press Enter to try another password.")
 
 
 ### end of new
