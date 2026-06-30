@@ -32,7 +32,7 @@ def run_cracker():
 
     with open(TEMPFILE, "w") as tf:
         tf.write(f"student:{hashed_pw}\n")
-    
+        
     print("Attempting to crack it with a common wordlist...")
     loading_animation("Cracking", 5)
 
