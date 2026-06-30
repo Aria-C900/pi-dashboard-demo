@@ -11,7 +11,7 @@ WORDLIST = "/usr/share/wordlists/rockyou-5k.txt"
 SALT = "club123"
 PASSFILE = "student_passwd.txt"
 TEMPFILE = "temp_passwd.txt"
-#EDIT: you will need to create passfile and temp file in the directory you have the program in.. i plan to fix this (6/30/26)
+#EDIT: the program automatically makes these files
 
 def loading_animation(text="Cracking", duration=3):
     print()
