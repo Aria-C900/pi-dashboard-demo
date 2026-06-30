@@ -10,6 +10,7 @@ import time
 WORDLIST = "/usr/share/wordlists/rockyou.txt"
 SALT = "club123"
 PASSFILE = "student_passwd.txt"
+TEMPFILE = "temp_passwd.txt"
 
 def loading_animation(text="Cracking", duration=3):
     print()
@@ -20,10 +21,10 @@ def loading_animation(text="Cracking", duration=3):
 
 def run_cracker():
     print("Welcome to the Password Cracker Demo!")
-    print("For education only. Please don't use real passwords.")
-    password = getpass.getpass("Enter a test password: ")
+    print("For educational use only. Please don't use real passwords.")
+    password = getpass.getpass("Enter a password: ")
 
-    print("\n📡 Hashing your password...")
+    print("\n Hashing your password...")
     hashed_pw = subprocess.check_output(["openssl", "passwd", "-6", "-salt", SALT, password]).decode().strip()
 
     with open(PASSFILE, "w") as f:
@@ -32,7 +33,7 @@ def run_cracker():
     with open(TEMPFILE, "w") as tf:
         tf.write(f"student:{hashed_pw}\n"
     
-print("⚙️ Attempting to crack it with a common wordlist...")
+print("Attempting to crack it with a common wordlist...")
 loading_animation("Cracking", 5)
 
 # CRACK (options first, then file; add format for $6$ hashes)
