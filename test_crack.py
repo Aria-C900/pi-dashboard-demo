@@ -7,10 +7,11 @@ import os
 import getpass
 import time
 
-WORDLIST = "/usr/share/wordlists/rockyou.txt"
+WORDLIST = "/usr/share/wordlists/rockyou-5k.txt"
 SALT = "club123"
 PASSFILE = "student_passwd.txt"
 TEMPFILE = "temp_passwd.txt"
+#you will need to create passfile and temp file in the directory you have the program in
 
 def loading_animation(text="Cracking", duration=3):
     print()
@@ -91,6 +92,5 @@ while True:
     run_cracker()
     again = input("\nTry another password? y/n: ").lower()
 
-    if again != "y"
         print("Goodbye!")
         break
